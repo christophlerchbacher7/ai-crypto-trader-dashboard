@@ -28,7 +28,7 @@ h2{margin:0 0 14px;font-size:18px;letter-spacing:-.3px}.kv{display:flex;justify-
 <button class="nav" data-screen="home">Übersicht</button><button class="nav" data-screen="markets">Märkte</button><button class="nav" data-screen="depot">Depot</button><button class="nav" data-screen="history">Verlauf</button><button class="nav" data-screen="settings">Einstellungen</button>
 </nav>
 <section id="home" class="screen active">
-<div class="page-head"><div class="eyebrow">14-Tage-Forward-Test</div><h1>Dein Überblick</h1><p id="home-date">Zuletzt analysiert: —</p></div>
+<div class="page-head"><div class="eyebrow">14-Tage-Forward-Test</div><h1>Dein Überblick</h1><p id="home-date">Zuletzt analysiert: —</p><p id="freshness-note" role="status" aria-live="polite">Aktualisierungsstatus wird geprüft.</p></div>
 <div class="card hero"><div class="label">Aktueller virtueller Depotwert</div><div class="value" id="home-equity">—</div><div id="home-pnl" class="small">Ergebnis seit Testbeginn: —</div><div class="progress"><div id="progress-bar"></div></div><div class="small" id="progress-text">Testfortschritt wird geladen</div></div>
 <div class="grid space">
 <div class="card"><div class="label">Freies Guthaben</div><div class="value" id="home-cash">—</div></div>
@@ -96,6 +96,20 @@ $('home-equity').textContent=euro(eq);$('home-pnl').textContent='Ergebnis seit T
 $('home-pnl').classList.add(pnl>=0?'buy':'exit');$('progress-bar').style.width=String(100*elapsed/14)+'%';
 $('progress-text').textContent='Tag '+fmt(elapsed)+' von 14 · Ende: '+date(trial.ends_utc);
 $('home-date').textContent='Letzter erfolgreicher Simulationslauf: '+date(trial.last_run_utc);
+const latestPublished=Date.parse(data.generated_utc||'');
+const latestSimulation=Date.parse(trial.last_run_utc||'');
+const checkedAt=Date.now();
+const publishAgeHours=Number.isFinite(latestPublished)?(checkedAt-latestPublished)/3600000:Infinity;
+const simAgeHours=Number.isFinite(latestSimulation)?(checkedAt-latestSimulation)/3600000:Infinity;
+const freshness=$('freshness-note');
+if(publishAgeHours>3 || simAgeHours>4 || publishAgeHours<-.25 || simAgeHours<-.25){
+  freshness.textContent='⚠ Anzeige veraltet oder Update ausgefallen. Letzter Dashboard-Datenstand: '+date(data.generated_utc)+'. Die Simulation kann trotzdem weiterlaufen.';
+  freshness.style.color='#ffba7b';
+}else{
+  freshness.textContent='Datenstand: '+date(data.generated_utc)+' · vor '+Math.max(0,Math.round(publishAgeHours*60))+' Minuten veröffentlicht.';
+  freshness.style.color='#8ee4c1';
+}
+
 $('home-cash').textContent=euro(trial.cash_eur);$('home-open').textContent=String(Object.keys(trial.positions||{}).length);
 $('home-closed').textContent=String(assess.completed_trades??0);
 $('home-state').textContent=trial.state==='COMPLETED'?'Beendet':trial.paused?'Pausiert':'Läuft';
