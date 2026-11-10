@@ -22,7 +22,41 @@ h2{margin:0 0 14px;font-size:18px;letter-spacing:-.3px}.kv{display:flex;justify-
 .notice{padding:16px;border:1px solid #365572;border-radius:13px;background:#10263c;color:#c0d2e3;font-size:13px;line-height:1.6}.bottom-nav{display:none}.foot{font-size:12px;color:#8095af;margin-top:18px}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.coin-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){main{padding:18px 14px 100px}.header{margin-bottom:19px}.logo{font-size:19px}.pill{font-size:10px;padding:8px}.desktop-nav{display:none}.card{padding:17px;border-radius:17px}.hero{padding:21px}.grid{gap:9px}.grid.two{gap:9px}.value{font-size:21px}.hero .value{font-size:40px}.coin-grid{gap:9px}.coin{padding:14px;min-height:155px}.ticker{font-size:16px}.token{width:32px;height:32px}.bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;bottom:0;left:0;right:0;padding:9px 4px max(10px,env(safe-area-inset-bottom));background:#111e30;border-top:1px solid #33485f;z-index:5}.bottom-nav .nav{font-size:10px;padding:9px 2px;display:flex;align-items:center;flex-direction:column;gap:6px}.nav-symbol{font-size:19px}.page-head h1{font-size:28px}.chart{height:190px}}
-.stop-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#ad2026;border:2px solid #ff6b72;color:white;font-weight:800;text-decoration:none;padding:12px 19px;border-radius:13px;letter-spacing:.2px;box-shadow:0 0 0 1px #682127}.stop-link:hover,.stop-link:focus-visible{background:#da2931;outline:2px solid #fff;outline-offset:3px}.stop-note{font-size:11px;color:#c7b1b7;max-width:310px;line-height:1.35}.stop-controls{display:flex;flex-direction:column;align-items:flex-end;gap:5px}@media(max-width:600px){.stop-controls{width:100%;align-items:stretch}.stop-link{width:100%;padding:14px}.stop-note{max-width:none;text-align:center}}</style></head><body><div style="max-width:1150px;margin:0 auto;padding:12px 24px 0"><a href="rebalancing-research.html" style="color:#78d6e8;font:14px system-ui,sans-serif">50/50-Rebalancing: historische Forschungsresultate (keine Echtgeldorders)</a></div><main>
+.stop-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#ad2026;border:2px solid #ff6b72;color:white;font-weight:800;text-decoration:none;padding:12px 19px;border-radius:13px;letter-spacing:.2px;box-shadow:0 0 0 1px #682127}.stop-link:hover,.stop-link:focus-visible{background:#da2931;outline:2px solid #fff;outline-offset:3px}.stop-note{font-size:11px;color:#c7b1b7;max-width:310px;line-height:1.35}.stop-controls{display:flex;flex-direction:column;align-items:flex-end;gap:5px}@media(max-width:600px){.stop-controls{width:100%;align-items:stretch}.stop-link{width:100%;padding:14px}.stop-note{max-width:none;text-align:center}}
+/* Mobile-first touch and readability refinements */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{overflow-x:hidden}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button:focus-visible,a:focus-visible{outline:3px solid #6adad3;outline-offset:3px}
+@media(max-width:600px){
+ main{padding:16px 14px calc(116px + env(safe-area-inset-bottom));width:100%}
+ .header{align-items:flex-start;gap:12px}
+ .header .logo{font-size:22px}
+ .sub{font-size:12px}
+ .stop-controls{align-items:flex-start;gap:8px}
+ .stop-controls .pill{font-size:12px}
+ .stop-link{min-height:48px;font-size:14px}
+ .page-head{margin-bottom:16px}
+ .page-head h1{font-size:29px;line-height:1.15}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .grid .card{min-width:0;padding:14px}
+ .grid .value{font-size:clamp(18px,5vw,24px);overflow-wrap:anywhere}
+ .hero .value{font-size:clamp(34px,10vw,45px)}
+ .coin-grid{grid-template-columns:1fr;gap:10px}
+ .coin{min-height:auto;padding:16px}
+ .coin .ticker{font-size:18px}
+ .kv{font-size:13px;align-items:flex-start}
+ .kv span:last-child{max-width:55%;overflow-wrap:anywhere}
+ .trade{align-items:flex-start}
+ .bottom-nav{padding:8px 4px calc(10px + env(safe-area-inset-bottom));grid-template-columns:repeat(5,minmax(0,1fr));box-shadow:0 -8px 24px #0005}
+ .bottom-nav .nav{min-height:52px;font-size:11px;line-height:1.15;padding:7px 1px}
+ .nav-symbol{font-size:21px}
+ .tab{min-height:44px}
+ .table-wrap{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .mobile-research-link{display:block;line-height:1.5;font-size:13px}
+}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.grid.two{grid-template-columns:1fr}.bottom-nav .nav{font-size:10px}}
+</style></head><body><div class="mobile-research-link" style="max-width:1150px;margin:0 auto;padding:12px 24px 0"><a href="rebalancing-research.html" style="color:#78d6e8;font:14px system-ui,sans-serif">50/50-Rebalancing: historische Forschungsresultate (keine Echtgeldorders)</a></div><main>
 <header class="header"><div><div class="logo">AI <em>Crypto</em> Trader</div><div class="sub">Öffentliche Ansicht · nur virtuelle Depots</div></div><div class="stop-controls"><div class="pill">● Nur Simulation · Kein Echtgeld</div><a class="stop-link" href="https://github.com/christophlerchbacher7/ai-crypto-trader/actions/workflows/red-stop.yml" target="_blank" rel="noopener noreferrer" aria-label="Roten NOT-AUS für die Trading-Simulation in GitHub öffnen">■ ROTER NOT-AUS</a><div class="stop-note">Öffnet GitHub. Zum Stoppen dort „Run workflow“ bestätigen. Nicht sofort wirksam.</div></div></header>
 <nav class="desktop-nav" aria-label="App-Bereiche">
 <button class="nav" data-screen="home">Übersicht</button><button class="nav" data-screen="markets">Märkte</button><button class="nav" data-screen="depot">Depot</button><button class="nav" data-screen="history">Verlauf</button><button class="nav" data-screen="settings">Einstellungen</button>
