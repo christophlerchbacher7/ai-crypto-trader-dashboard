@@ -1,0 +1,42 @@
+name: Deploy public read-only dashboard
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'rebalancing-research.html'
+      - 'data.json'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate read-only research assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          index = Path('index.html').read_text(encoding='utf-8')
+          research = Path('rebalancing-research.html').read_text(encoding='utf-8')
+          assert 'href="rebalancing-research.html"' in index
+          assert '50/50-Rebalancing' in research
+          assert 'Keine Handelssignale' in research
+          print('Static page and link verified')
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
