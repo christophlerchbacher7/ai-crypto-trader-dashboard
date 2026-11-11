@@ -57,7 +57,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #6adad3;outline-offset:3p
 }
 @media(max-width:360px){.grid{grid-template-columns:1fr}.grid.two{grid-template-columns:1fr}.bottom-nav .nav{font-size:10px}}
 </style></head><body><div class="mobile-research-link" style="max-width:1150px;margin:0 auto;padding:12px 24px 0"><a href="rebalancing-research.html" style="color:#78d6e8;font:14px system-ui,sans-serif">50/50-Rebalancing: historische Forschungsresultate (keine Echtgeldorders)</a></div><main>
-<header class="header"><div><div class="logo">AI <em>Crypto</em> Trader</div><div class="sub">Öffentliche Testansicht · zeigt NICHT dein echtes Kraken-Guthaben</div></div><div class="stop-controls"><div class="pill">● Nur Simulation · Kein Kraken-Kontostand</div><a class="stop-link" href="https://github.com/christophlerchbacher7/ai-crypto-trader/actions/workflows/red-stop.yml" target="_blank" rel="noopener noreferrer" aria-label="Roten NOT-AUS für die Trading-Simulation in GitHub öffnen">■ ROTER NOT-AUS</a><div class="stop-note">Öffnet GitHub. Zum Stoppen dort „Run workflow“ bestätigen. Nicht sofort wirksam.</div></div></header>
+<header class="header"><div><div class="logo">AI <em>Crypto</em> Trader</div><div class="sub">Öffentliche Testansicht · zeigt NICHT dein echtes Kraken-Guthaben</div></div><div class="stop-controls"><div class="pill">Nur öffentliche Simulation und Marktforschung</div><div class="stop-note">Keine Kontodaten und keine Handelssteuerung auf dieser Seite.</div></div></header>
 <nav class="desktop-nav" aria-label="App-Bereiche">
 <button class="nav" data-screen="home">Übersicht</button><button class="nav" data-screen="markets">Märkte</button><button class="nav" data-screen="depot">Depot</button><button class="nav" data-screen="history">Verlauf</button><button class="nav" data-screen="settings">Einstellungen</button>
 </nav>
@@ -80,7 +80,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #6adad3;outline-offset:3p
 <div class="card"><h2>Letzte Aktivität</h2><div id="home-event" class="muted">Keine Aktionen</div><div class="space"><div class="notice">Der Bot wartet bei fehlendem Signal. Es werden keine echten Orders ausgelöst.</div></div></div></div>
 </section>
 <section id="markets" class="screen"><div class="page-head"><div class="eyebrow">Marktanalyse</div><h1>Kryptomärkte</h1><p>Öffentliche Kursdaten, letzte abgeschlossene Stundenkerze.</p></div>
-<div id="coin-grid" class="coin-grid"></div><div class="card space"><h2 id="market-title">Marktverlauf (abgeschlossene Stundenkerzen)</h2><div id="market-tabs" class="tab-row"></div><div class="chart"><svg id="market-chart" role="img" aria-label="Simulierter historischer Kapitalverlauf"></svg></div>
+<div class="card space"><h2>Öffentliche Kraken-Spot-Kurse</h2><p id="public-quote-status" role="status">Aktuelle öffentliche Kursdaten werden geprüft.</p><div id="public-quote-grid" class="coin-grid"></div><p class="small">Ohne Kontozugriff, ohne API-Schlüssel, ohne Handelsfunktion. Kurse sind indikativ.</p></div><div id="coin-grid" class="coin-grid"></div><div class="card space"><h2 id="market-title">Marktverlauf (abgeschlossene Stundenkerzen)</h2><div id="market-tabs" class="tab-row"></div><div class="chart"><svg id="market-chart" role="img" aria-label="Simulierter historischer Kapitalverlauf"></svg></div>
 <div class="kv"><span>Letzter Schlusskurs</span><span id="market-end">—</span></div><div class="kv"><span>Kursänderung im angezeigten Zeitraum</span><span id="market-return">—</span></div><div class="kv"><span>Beobachteter Zeitraum</span><span id="market-dd">—</span></div></div>
 <div class="card space"><h2>Was zeigen die Signale?</h2><p>Die Signale werden aus abgeschlossenen Stundenkerzen mit gleitenden Durchschnitten von 5 und 20 Stunden berechnet. Ein Signal bedeutet nicht automatisch, dass im virtuellen Depot ein Kauf ausgeführt wurde. Gebühren, Risikolimits und weitere Prüfungen können einen Kauf verhindern.</p><p class="small">Der Marktchart zeigt echte historische Schlusskurse und ist kein Gewinnchart. Die Depotwerte der beiden Simulationen findest du auf Home und Depot.</p></div></section>
 <section id="depot" class="screen"><div class="page-head"><div class="eyebrow">Nur Simulation · 300 € Startkapital</div><h1>Virtuelles Testdepot</h1><p>Kein Echtgeld: Das fortlaufende 14-Tage-Depot, nicht die historischen Einzelrücktests.</p></div>
@@ -88,8 +88,8 @@ button:focus-visible,a:focus-visible{outline:3px solid #6adad3;outline-offset:3p
 <div class="card space"><h2>Kontostand</h2><div class="kv"><span>Startkapital</span><span>300,00 €</span></div><div class="kv"><span>Verfügbares Guthaben</span><span id="depot-cash">—</span></div><div class="kv"><span>Offene Positionen</span><span id="depot-position-count">—</span></div><div class="kv"><span>Beobachtungen</span><span id="depot-observations">—</span></div></div><div class="card space"><h2>Aktuelle Positionen</h2><div id="positions-list" class="muted">Keine Positionen</div></div></section>
 <section id="history" class="screen"><div class="page-head"><div class="eyebrow">Handelsaktivitäten</div><h1>Verlauf</h1><p>Nur tatsächlich simulierte Transaktionen aus diesem Test.</p></div><div class="card"><h2>Käufe und Verkäufe</h2><div id="trade-history" class="trade-list"></div></div></section>
 <section id="settings" class="screen"><div class="page-head"><div class="eyebrow">Simulation &amp; Sicherheit</div><h1>Einstellungen</h1><p>Aktueller Modus und geplante Live-Vorbereitung.</p></div>
-<div class="card" style="border-color:#74363e"><h2>Roter NOT-AUS</h2><p>Stoppt die automatischen virtuellen Trading-Simulationen beim nächsten GitHub-Kontrollpunkt. GitHub-Anmeldung und „Run workflow“ erforderlich. Der Stopp verkauft keine Bestände und ist kein Echtzeit-NOT-AUS für Echtgeld.</p><a class="stop-link" href="https://github.com/christophlerchbacher7/ai-crypto-trader/actions/workflows/red-stop.yml" target="_blank" rel="noopener noreferrer">■ ROTER NOT-AUS IN GITHUB ÖFFNEN</a></div><div class="card space"><h2>14-Tage-Test</h2><div class="kv"><span>Beginn</span><span id="setting-start">—</span></div><div class="kv"><span>Ende</span><span id="setting-end">—</span></div><div class="kv"><span>Letzte Aktualisierung</span><span id="setting-updated">—</span></div><div class="kv"><span>Märkte</span><span>BTC · ETH · SOL · XRP</span></div><div class="kv"><span>Maximale Einzelposition</span><span>50 € virtuell</span></div><div class="kv"><span>Handelsmodus</span><span class="wait">PAPER ONLY</span></div></div>
-<div class="card space"><h2>Bitpanda später verbinden</h2><div class="notice">Bitpanda-Leseverbindung im privaten Repository geprüft; das öffentliche Dashboard enthält keine Kontodaten. Auch nach einem positiven 14-Tage-Test bleibt Echtgeldhandel gesperrt. Eine Aktivierung erfordert geprüfte API-Zugänge, Gebühren, Ordertests, einen unabhängigen Notaus und deine ausdrückliche Freigabe.</div><div class="kv"><span>Bitpanda-Anbindung</span><span>Vorbereitung</span></div><div class="kv"><span>Automatische Echtgeldorders</span><span class="exit">Deaktiviert</span></div></div><p class="foot">GitHub Actions erstellt periodische Momentaufnahmen. Bei Ausfällen oder Verzögerungen können Daten älter sein. Das ist keine Echtzeit-Handelsplattform.</p></section>
+<div class="card"><h2>Keine Handelssteuerung</h2><p>Diese öffentliche Seite zeigt ausschließlich historische Simulationen. Sie kann keine echten Orders starten, stoppen oder verändern. Handelssteuerung und Not-Aus gehören nur in die private Anwendung.</p></div><div class="card space"><h2>14-Tage-Test</h2><div class="kv"><span>Beginn</span><span id="setting-start">—</span></div><div class="kv"><span>Ende</span><span id="setting-end">—</span></div><div class="kv"><span>Letzte Aktualisierung</span><span id="setting-updated">—</span></div><div class="kv"><span>Märkte</span><span>BTC · ETH · SOL · XRP</span></div><div class="kv"><span>Maximale Einzelposition</span><span>50 € virtuell</span></div><div class="kv"><span>Handelsmodus</span><span class="wait">PAPER ONLY</span></div></div>
+<div class="card space"><h2>Privatbereich getrennt</h2><div class="notice">Echte Kraken-Kontostände, persönliche Orders, API-Zugangsdaten und Handelsfunktionen werden hier nicht veröffentlicht. Die dargestellten Strategien sind historische Forschung, keine Handelsaufträge.</div><div class="kv"><span>Datenart</span><span>Öffentliche Märkte und Simulation</span></div><div class="kv"><span>Echtgeldhandel</span><span class="exit">Nicht verfügbar</span></div></div><p class="foot">GitHub Actions erstellt periodische Momentaufnahmen. Bei Ausfällen oder Verzögerungen können Daten älter sein. Das ist keine Echtzeit-Handelsplattform.</p></section>
 <footer id="errors" class="foot"></footer>
 </main>
 <nav class="bottom-nav" aria-label="Mobile Navigation">
@@ -107,6 +107,33 @@ try {
   return;
 }
 const $=id=>document.getElementById(id);
+
+async function displayAnonymousKrakenMarkets(){
+ const status=document.getElementById('public-quote-status'),grid=document.getElementById('public-quote-grid');
+ try {
+  const response=await fetch('./markets-public.json?refresh='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('MISSING_PUBLIC_SNAPSHOT');
+  const info=await response.json(),age=(Date.now()-Date.parse(info.as_of))/3600000;
+  if(info.source!=='KRAKEN_PUBLIC_TICKER'||info.account_data!==false||info.execution_enabled!==false||
+      !Array.isArray(info.markets)||info.markets.length!==6||!Number.isFinite(age)||age<-.5||age>4)throw Error('INVALID_OR_STALE_PUBLIC_MARKET');
+  grid.replaceChildren();
+  for(const m of info.markets){
+   if(!['BTC','ETH','SOL','XRP','DOGE','ADA'].includes(m.symbol)||!Number.isFinite(Number(m.last_eur))||Number(m.last_eur)<=0)throw Error('INVALID_MARKET');
+   const card=document.createElement('div');card.className='card coin';
+   const symbol=document.createElement('div');symbol.className='ticker';symbol.textContent=m.symbol+'/EUR';
+   const price=document.createElement('div');price.className='value';price.textContent=Number(m.last_eur).toLocaleString('de-AT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+   card.append(symbol,price);grid.append(card);
+  }
+  status.textContent='Kraken-Kursdatenstand: '+new Date(info.as_of).toLocaleString('de-AT',{timeZone:'Europe/Vienna'})+'.';
+  status.style.color='#8ee4c1';
+ }catch(_){
+  grid.replaceChildren();
+  status.textContent='Öffentliche Kurse derzeit nicht aktuell verfügbar. Historische Simulationsdaten können älter sein.';
+  status.style.color='#ffba7b';
+ }
+}
+displayAnonymousKrakenMarkets();
+
 const euro=value=>Number(value).toLocaleString('de-AT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
 const fmt=value=>Number(value).toLocaleString('de-AT',{maximumFractionDigits:2});
 const date=value=>{if(!value)return '—';const d=new Date(value);return isNaN(d.getTime())?'—':d.toLocaleString('de-AT',{timeZone:'Europe/Vienna',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});};

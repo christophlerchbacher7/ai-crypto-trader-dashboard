@@ -1,9 +1,7 @@
-# AI Crypto Trader – öffentliche Simulationsansicht
+# AI Crypto Trader – öffentliches Forschungs-Dashboard
 
-Dies ist ausschließlich die öffentliche Darstellung von zwei vollständig **virtuellen** 300-€-Testdepots und öffentlichen Kursinformationen. Hier sind keine API-Schlüssel, Kundendaten, Bankdaten oder Handelsfunktionen enthalten.
+Dieses öffentliche Repository enthält ausschließlich historische virtuelle 300-€-Tests und unabhängig bezogene öffentliche Kraken-Marktkurse. Die Testdaten können älter sein. Keinerlei private Kontenabfragen, Echtgeldorders, API-Keys, Not-Aus-Funktionen oder private Depotbestände werden hier bereitgestellt.
 
-Die eigentliche private Trading-Anwendung befindet sich in einem separaten privaten Repository. Die öffentliche Darstellung basiert auf einer bei der Veröffentlichung exportierten Momentaufnahme. Weitere automatische Aktualisierungen erfordern einen eingeschränkten Schreibzugang vom privaten Export-Workflow zu diesem Repository.
+Das echte Trading-System verbleibt im privaten Repository. Ein gesonderter GitHub-Workflow aktualisiert die öffentlichen Spot-Kurse ohne Zugriff auf das private System.
 
-Die App wird nach Aktivierung von GitHub Pages unter https://christophlerchbacher7.github.io/ai-crypto-trader-dashboard/ verfügbar.
-
-Echtgeldorders sind vollständig deaktiviert. Alle Kurs-/Handelswerte sind indikativ; Gebühren und Slippage sind Annahmen.
+Seite: https://christophlerchbacher7.github.io/ai-crypto-trader-dashboard/
