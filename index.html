@@ -77,7 +77,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #6adad3;outline-offset:3p
 <div><div class="label">Schnell · 1h / 15m / 5m</div><div class="value" id="compare-fast">—</div><div class="small" id="compare-fast-sub">Prüfung etwa alle 15 Minuten</div></div>
 </div></div>
 <div class="layout space"><div class="card"><h2>Aktuelle Marktsignale</h2><div id="home-signals"></div></div>
-<div class="card"><h2>Letzte Aktivität</h2><div id="home-event" class="muted">Keine Aktionen</div><div class="space"><div class="notice">Der Bot wartet bei fehlendem Signal. Es werden keine echten Orders ausgelöst.</div></div></div></div>
+<div class="card"><h2>Letzte Aktivität</h2><div id="home-event" class="muted">Keine Aktionen</div><div class="space"><div class="notice">Dies ist ein historischer Simulationsstand. Ob der private Trading-Worker aktuell läuft, lässt sich hier nicht ablesen.</div></div></div></div>
 </section>
 <section id="markets" class="screen"><div class="page-head"><div class="eyebrow">Marktanalyse</div><h1>Kryptomärkte</h1><p>Öffentliche Kursdaten, letzte abgeschlossene Stundenkerze.</p></div>
 <div class="card space"><h2>Öffentliche Kraken-Spot-Kurse</h2><p id="public-quote-status" role="status">Aktuelle öffentliche Kursdaten werden geprüft.</p><div id="public-quote-grid" class="coin-grid"></div><p class="small">Ohne Kontozugriff, ohne API-Schlüssel, ohne Handelsfunktion. Kurse sind indikativ.</p></div><div id="coin-grid" class="coin-grid"></div><div class="card space"><h2 id="market-title">Marktverlauf (abgeschlossene Stundenkerzen)</h2><div id="market-tabs" class="tab-row"></div><div class="chart"><svg id="market-chart" role="img" aria-label="Simulierter historischer Kapitalverlauf"></svg></div>
@@ -173,7 +173,7 @@ if(publishAgeHours>3 || simAgeHours>4 || publishAgeHours<-.25 || simAgeHours<-.2
 
 $('home-cash').textContent=euro(trial.cash_eur);$('home-open').textContent=String(Object.keys(trial.positions||{}).length);
 $('home-closed').textContent=String(assess.completed_trades??0);
-$('home-state').textContent=trial.state==='COMPLETED'?'Beendet':trial.paused?'Pausiert':'Läuft';
+$('home-state').textContent=(publishAgeHours>3||simAgeHours>4)?'Daten veraltet':trial.state==='COMPLETED'?'Beendet':trial.paused?'Pausiert':'Läuft';
 $('depot-equity').textContent=euro(eq);$('depot-pnl').textContent=(pnl>=0?'+':'')+euro(pnl);
 $('depot-cash').textContent=euro(trial.cash_eur);$('depot-position-count').textContent=String(Object.keys(trial.positions||{}).length);
 $('depot-observations').textContent=String(assess.observations??0);
@@ -186,7 +186,7 @@ for(const t of trades){const item=document.createElement('div');item.className='
 const left=document.createElement('div');const name=document.createElement('div');name.textContent=t.symbol+' · '+(t.action==='BUY'?'Kauf':t.action==='EXIT'?'Verkauf':t.action.replaceAll('_',' '));name.style.fontWeight='700';
 const subtitle=document.createElement('div');subtitle.className='meta';subtitle.textContent=date(t.time_utc);left.append(name,subtitle);
 const amount=document.createElement('div');amount.textContent=t.action==='BUY'?euro(t.budget_eur):(t.pnl_eur!==undefined?(Number(t.pnl_eur)>=0?'+':'')+euro(t.pnl_eur):'—');amount.className=t.action==='BUY'?'wait':Number(t.pnl_eur)>=0?'buy':'exit';item.append(left,amount);$('trade-history').append(item);}
-$('home-event').textContent=trades.length?trades[0].symbol+' · '+trades[0].action+' · '+date(trades[0].time_utc):'Noch kein virtueller Trade. Der Bot beobachtet den Markt.';
+$('home-event').textContent=trades.length?trades[0].symbol+' · '+trades[0].action+' · '+date(trades[0].time_utc):'Keine virtuellen Trades im veröffentlichten Datenstand.';
 }else{
 $('home-date').textContent='Kein gespeicherter 14-Tage-Test im Bericht vorhanden';
 $('home-state').textContent='Keine Daten';$('trade-history').textContent='Noch keine Simulationsdaten.';
