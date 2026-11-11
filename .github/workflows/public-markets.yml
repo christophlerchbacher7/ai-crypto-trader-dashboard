@@ -1,0 +1,47 @@
+name: Refresh anonymous public Kraken markets
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/public-markets.yml'
+      - 'scripts/update_public_markets.py'
+      - 'tests/test_public_markets.py'
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  refresh-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Public data safety tests
+        run: python -m unittest discover -s tests -p test_public_markets.py -v
+      - name: Fetch anonymous Kraken ticker quotes
+        run: python scripts/update_public_markets.py markets-public.json
+      - name: Commit public market data only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add markets-public.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh public Kraken quotes"
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4

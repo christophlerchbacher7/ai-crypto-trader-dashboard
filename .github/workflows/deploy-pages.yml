@@ -6,6 +6,7 @@ on:
       - 'index.html'
       - 'rebalancing-research.html'
       - 'data.json'
+      - 'markets-public.json'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 permissions:
