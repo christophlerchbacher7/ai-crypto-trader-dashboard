@@ -38,6 +38,8 @@ jobs:
           git add markets-public.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh public Kraken quotes"
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
       - uses: actions/configure-pages@v5
