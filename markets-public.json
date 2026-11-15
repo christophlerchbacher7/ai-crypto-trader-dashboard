@@ -1,44 +1,44 @@
 {
   "source": "KRAKEN_PUBLIC_TICKER",
-  "as_of": "2026-11-15T01:52:17.875929Z",
+  "as_of": "2026-11-15T09:19:18.018808Z",
   "account_data": false,
   "execution_enabled": false,
   "markets": [
     {
       "symbol": "BTC",
-      "last_eur": 56690.7,
-      "bid_eur": 56659.6,
-      "ask_eur": 56694.3
+      "last_eur": 59794.4,
+      "bid_eur": 59783.1,
+      "ask_eur": 59784.2
     },
     {
       "symbol": "ETH",
-      "last_eur": 1570.37,
-      "bid_eur": 1570.37,
-      "ask_eur": 1571.92
+      "last_eur": 1671.32,
+      "bid_eur": 1670.3,
+      "ask_eur": 1670.82
     },
     {
       "symbol": "SOL",
-      "last_eur": 61.44,
-      "bid_eur": 61.37,
-      "ask_eur": 61.42
+      "last_eur": 65.82,
+      "bid_eur": 65.78,
+      "ask_eur": 65.79
     },
     {
       "symbol": "XRP",
-      "last_eur": 0.82206,
-      "bid_eur": 0.82167,
-      "ask_eur": 0.82238
+      "last_eur": 0.88179,
+      "bid_eur": 0.88167,
+      "ask_eur": 0.88208
     },
     {
       "symbol": "DOGE",
-      "last_eur": 0.0509802,
-      "bid_eur": 0.050826,
-      "ask_eur": 0.0508546
+      "last_eur": 0.0536864,
+      "bid_eur": 0.0536975,
+      "ask_eur": 0.0537166
     },
     {
       "symbol": "ADA",
-      "last_eur": 0.130367,
-      "bid_eur": 0.130273,
-      "ask_eur": 0.130442
+      "last_eur": 0.139905,
+      "bid_eur": 0.139922,
+      "ask_eur": 0.140073
     }
   ]
 }
